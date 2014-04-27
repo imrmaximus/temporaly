@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140427071540) do
+ActiveRecord::Schema.define(version: 20140427134239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,28 @@ ActiveRecord::Schema.define(version: 20140427071540) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
+  create_table "address_types", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "addresses", force: true do |t|
+    t.integer  "title"
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "phone_number"
+    t.string   "address_line1"
+    t.string   "address_line2"
+    t.string   "address_line3"
+    t.string   "company_name"
+    t.string   "postal_code"
+    t.string   "city"
+    t.string   "country"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "admin_users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -48,6 +70,18 @@ ActiveRecord::Schema.define(version: 20140427071540) do
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "user_address_assocs", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "address_id"
+    t.integer  "address_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_address_assocs", ["address_id"], name: "index_user_address_assocs_on_address_id", using: :btree
+  add_index "user_address_assocs", ["address_type_id"], name: "index_user_address_assocs_on_address_type_id", using: :btree
+  add_index "user_address_assocs", ["user_id"], name: "index_user_address_assocs_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "firstname"
