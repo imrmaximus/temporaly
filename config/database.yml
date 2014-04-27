@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  database: myeggbox_development_api
+  username: myeggbox
+  password: myeggbox
+  
+test:
+  adapter: postgresql
+  database: myeggbox_test
+  username: myeggbox
+  password: myeggbox
+
+production:
+  adapter: postgresql
+  database: myeggbox_production
+  username: myeggbox
+  password: mmVsyBegHK1CJEATxSVNP
+  
+staging:
+  adapter: postgresql
+  database: myeggbox_staging
+  username: myeggbox
+  password: 9K9DtzR70wT5RBtAPQgbH
