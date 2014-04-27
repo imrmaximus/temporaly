@@ -6,7 +6,12 @@ gem 'rails', '4.0.0'
 # Use PostgreSQL as the database for Active Record
 gem 'pg'
 
+# Managing
 gem 'activeadmin', github: 'gregbell/active_admin'
+
+# Authenticate
+gem 'devise', '3.2.4'
+gem 'devise_invitable', '1.3.4'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
